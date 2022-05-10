@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\LoginContrller;
+use App\Http\Controllers\Backend\ProductController;
 use Illuminate\Support\Facades\Route;
 use PHPUnit\TextUI\XmlConfiguration\Group;
 
@@ -30,5 +31,10 @@ Route::group(['prefix'=>'admin','as'=>'admin.'],function(){
     });
 
     Route::resource('categoris',CategoryController::class);
+
+    Route::controller(ProductController::class)->group(function(){
+        Route::get('/products','list')->name('product.list');
+        Route::post('/product/add','productAdd')->name('product.add');
+    });
 });
 
