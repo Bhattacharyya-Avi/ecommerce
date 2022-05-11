@@ -35,6 +35,10 @@ Route::group(['prefix'=>'admin','as'=>'admin.'],function(){
     Route::controller(ProductController::class)->group(function(){
         Route::get('/products','list')->name('product.list');
         Route::post('/product/add','productAdd')->name('product.add');
+        Route::get('/product/edit/{id}','productEdit')->name('product.edit');
+        Route::put('/product/update/{id}','productupdate')->name('product.update');
+        Route::get('/product/delete/{id}','productDelete')->name('product.delete');
+
     });
 });
 
