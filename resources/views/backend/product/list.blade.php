@@ -40,8 +40,8 @@
                             <td>{{$product->price}}</td>
                             <td>{{$product->details}}</td>
                             <td>  
-                                <a class="btn btn-info" href="{{route('admin.categoris.edit',$product->id)}}" ><i class="material-icons">edit</i></a>
-                                <a class="btn btn-info" href="{{route('admin.categoris.edit',$product->id)}}" ><i class="material-icons">edit</i></a>
+                                <a href="{{route('admin.product.edit',$product->id)}}" ><i class="material-icons">edit</i></a>
+                                <a href="{{route('admin.product.delete',$product->id)}}" ><i class="material-icons">delete</i></a>
                                    
                             </td>
                         </tr>
