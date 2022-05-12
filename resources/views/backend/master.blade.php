@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="{{url('css/fontawesome-all.css')}}">
     <link rel="stylesheet" href="{{url('css/morris.css')}}">
     <link rel="stylesheet" href="{{url('css/materialdesignicons.min.css')}}">
-    <title>Movie Ticket</title>
+    <title>{{$settings->name}}</title>
     <meta name="robots" content="noindex, nofollow">
 </head>
 
