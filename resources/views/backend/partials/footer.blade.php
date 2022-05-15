@@ -1,17 +1,15 @@
-<div class="footer">
-                <div class="container-fluid">
-                    <div class="row">
-                        {{-- <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                            Copyright © 2018 Concept. All rights reserved.
-                        </div> --}}
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                            <div class="text-md-right footer-links d-none d-sm-block">
-                                {{-- <a href="javascript: void(0);">About</a>
-                                <a href="javascript: void(0);">Support</a>
-                                <a href="javascript: void(0);">Contact Us</a> --}}
-                                <p>Made for BUSTERX with ❤</p>
-                            </div>
-                        </div>
-                    </div>
+<footer class="footer pt-3  ">
+    <div class="container-fluid">
+        <div class="row align-items-center justify-content-lg-between">
+            <div class="col-lg-6 mb-lg-0 mb-4">
+                <div class="copyright text-center text-sm text-muted text-lg-start">
+                    © <script>
+                        document.write(new Date().getFullYear())
+                    </script>,
+                    made with <i class="fa fa-heart"></i> by
+                    <a href="" class="font-weight-bold" target="_blank">AB</a>
                 </div>
             </div>
+        </div>
+    </div>
+</footer>
