@@ -4,6 +4,7 @@ use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\LoginContrller;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\SettingController;
+use App\Http\Controllers\Frontend\RegistrationController;
 use Illuminate\Support\Facades\Route;
 use PHPUnit\TextUI\XmlConfiguration\Group;
 
@@ -17,6 +18,10 @@ use PHPUnit\TextUI\XmlConfiguration\Group;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+// Route::controller(RegistrationController::class)->group(function(){
+    
+// });
 
 // Route::get('/', function () {
 //     return view('welcome');
