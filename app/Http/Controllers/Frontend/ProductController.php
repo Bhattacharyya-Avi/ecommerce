@@ -22,4 +22,23 @@ class ProductController extends Controller
             ]);
         }
     }
+
+    public function productView($slug)
+    {
+        try {
+            $product = Product::where('slug',$slug)->first();
+        if ($product) {
+            return response()->json([
+                'message'=>'success...',
+                'product'=>$product
+            ],200);
+        }
+        } catch (\Throwable $th) {
+            return response()->json([
+                'message'=>'something went wrong.',
+                'error'=>$th->getMessage()
+            ],404);
+        }
+        
+    }
 }

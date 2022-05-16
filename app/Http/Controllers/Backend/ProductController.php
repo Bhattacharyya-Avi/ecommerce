@@ -27,6 +27,7 @@ class ProductController extends Controller
             'image'=>'image',
         ]);
         try {
+            $filename = null;
             if ($request->hasFile('image')) {
                 $file= $request->file('image');
                 $filename = date('Ymdhis').'.'.$file->getClientOriginalExtension();
@@ -87,5 +88,16 @@ class ProductController extends Controller
         $product->delete();
         session()->flash('success','product deleted.');
         return redirect()->back();
+    }
+
+    public function productView($id)
+    {
+        $product = Product::find($id);
+        if($product){
+            return view('backend.product.view',compact('product'));
+        }else{
+            session()->flash('error','no product found.');
+            return redirect()->back();
+        }
     }
 }

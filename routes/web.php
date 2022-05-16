@@ -49,6 +49,7 @@ Route::group(['prefix'=>'admin','as'=>'admin.'],function(){
         Route::get('/product/edit/{id}','productEdit')->name('product.edit');
         Route::put('/product/update/{id}','productupdate')->name('product.update');
         Route::get('/product/delete/{id}','productDelete')->name('product.delete');
+        Route::get('/product/view/{id}','productView')->name('product.view');
     });
 });
 
