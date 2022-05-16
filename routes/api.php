@@ -26,3 +26,4 @@ Route::post('/registration/post',[RegistrationController::class,'registrationPos
 Route::get('/categories',[CategoryController::class,'categories']);
 //product
 Route::get('/products',[ProductController::class,'products']);
+Route::get('/product/view/slug',[ProductController::class,'productView']);

@@ -39,6 +39,16 @@
     </div>
 
     <div class="form-group">
+        <label for="exampleFormControlInput1">Previous Image 
+        </label>
+        @if ($product->image != null)
+        <img width="200px" src="{{url('/uploads/product/',$product->image)}}" alt="">
+        @else
+        <p>No image found.</p>
+        @endif
+    </div>
+
+    <div class="form-group">
         <label for="exampleFormControlInput1">Quantity 
             <span style="color: red">*</span>
         </label>
