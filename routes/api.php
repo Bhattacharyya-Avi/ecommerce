@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Frontend\CategoryController;
+use App\Http\Controllers\Frontend\LoginController;
 use App\Http\Controllers\Frontend\ProductController;
 use App\Http\Controllers\Frontend\RegistrationController;
 use Illuminate\Http\Request;
@@ -21,6 +22,9 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 Route::post('/registration/post',[RegistrationController::class,'registrationPost']);
+
+//login
+Route::post('/login',[LoginController::class,'login']);
 
 //category
 Route::get('/categories',[CategoryController::class,'categories']);
