@@ -20,7 +20,8 @@ class CategoryTableSeeder extends Seeder
             [
                 'name' => 'Root',
                 'slug' => Str::slug('Root'),
-                'position' => 1
+                'position' => 1,
+                'is_parent' => 1,
             ],
 
             [

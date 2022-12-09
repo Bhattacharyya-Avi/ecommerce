@@ -11,15 +11,16 @@ class LoginContrller extends Controller
 {
     public function loginPost(Request $request)
     {
+        
         $request->validate([
             'email'=>'required|email',
             'password'=>'required',
         ]);
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-            return redirect()->route('admin.setting');
+            return redirect()->route('setting');
         }
         else {
-            return 'get lost';
+            return redirect()->route('admin.dashboard');
         }
     }
 }

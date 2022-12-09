@@ -16,8 +16,10 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::orderBy('id','DESC')->get();
-        return view('backend.category.list',compact('categories'));
+        $categories = Category::with('isParent')->orderBy('position','ASC')->get();
+        // Parent category
+        $parentCategories = Category::where('is_parent', '!=', 0)->get();
+        return view('backend.category.list',compact('categories','parentCategories'));
     }
 
     /**
@@ -38,11 +40,34 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        Category::create([
-            'name'=>$request->name,
-            'details'=>$request->details,
-            'slug'=>Str::slug($request->name),
+        // data validation
+        $request->validate([
+            'name' => 'required',
+            'position' => 'required',
         ]);
+        $data = [
+            'name'=>$request->name,
+            'slug'=>Str::slug($request->name),
+            'details'=>$request->details,
+            'position'=>$request->position,
+        ];
+        // checking prent category or not
+        if ($request->is_parent == "on") {
+            // validation 
+            $request->validate([
+                'parent_id' =>  'required'
+            ]);
+            $data['is_parent'] = 1;
+            $data['parent_id'] = $request->parent_id;
+        }else{
+            $data['parent_id']= $request->parent_id;
+        }
+
+        try {
+            Category::create($data);
+        } catch (\Throwable $th) {
+            session()->flash('error',$th->getMessage(), $th->getLine());
+        }
         session()->flash('success','category added');
         return redirect()-> back();
     }

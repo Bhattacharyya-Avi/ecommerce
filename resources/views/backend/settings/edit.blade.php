@@ -1,6 +1,6 @@
 @extends('backend.master')
 @section('contents')
-<form action="{{route('admin.setting.update',$setting->id)}}" method="POST" enctype="multipart/form-data">
+<form action="{{route('setting.update',$setting->id)}}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('put')
     <div class="form-group">
