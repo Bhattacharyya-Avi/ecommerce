@@ -1,6 +1,6 @@
 @extends('backend.master')
 @section('contents')
-<form action="{{route('admin.categoris.update', $category->id)}}" method="POST" enctype="multipart/form-data">
+<form action="{{route('categoris.update', $category->id)}}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('PUT')
     <div class="form-group">
