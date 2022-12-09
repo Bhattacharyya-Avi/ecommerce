@@ -1,6 +1,6 @@
 @extends('backend.master')
 @section('contents')
-<form action="{{route('admin.product.update',$product->id)}}" method="POST" enctype="multipart/form-data">
+<form action="{{route('product.update',$product->id)}}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('put')
     <div class="form-group">

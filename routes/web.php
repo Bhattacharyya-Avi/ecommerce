@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\LoginContrller;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\SettingController;
@@ -30,10 +31,14 @@ Route::get('/', function () {
     return redirect('admin/');
 });
 
-Route::group(['prefix'=>'admin','as'=>'admin.'],function(){
+Route::prefix('admin')->group(function(){
     Route::controller(LoginContrller::class)->group(function(){
         Route::view('/','backend.login.login')->name('login');
         Route::post('/login/post','loginPost')->name('login.post');
+    });
+
+    Route::controller(DashboardController::class)->group(function(){
+        Route::get('/dashboard','dashboard')->name('admin.dashboard');
     });
 
     Route::controller(SettingController::class)->group(function(){

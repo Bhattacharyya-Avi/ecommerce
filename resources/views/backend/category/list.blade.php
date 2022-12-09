@@ -34,12 +34,12 @@
                             <td>{{$category->details}}</td>
                             <td>
                                 
-                                <form action="{{route('admin.categoris.destroy',$category->id)}}" method="POST">
+                                <form action="{{route('categoris.destroy',$category->id)}}" method="POST">
                                     @csrf
                                     @method('delete')
                                     <button type="submit" class="btn btn-danger" ><i class="material-icons">delete</i></button>
                                 </form>  
-                                <a class="btn btn-info" href="{{route('admin.categoris.edit',$category->id)}}" ><i class="material-icons">edit</i></a>
+                                <a class="btn btn-info" href="{{route('categoris.edit',$category->id)}}" ><i class="material-icons">edit</i></a>
                                 
                                 {{-- <a href="{{route('admin.categoris.destroy',$category->id)}}"></a> --}}
                                 
@@ -78,7 +78,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <form action="{{route('admin.categoris.store')}}" method="POST" enctype="multipart/form-data">
+            <form action="{{route('categoris.store')}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <label for="exampleFormControlInput1">Category Name 

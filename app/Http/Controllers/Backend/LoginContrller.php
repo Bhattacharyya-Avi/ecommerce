@@ -16,7 +16,7 @@ class LoginContrller extends Controller
             'password'=>'required',
         ]);
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-            return 'true';
+            return redirect()->route('admin.setting');
         }
         else {
             return 'get lost';
