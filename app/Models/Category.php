@@ -12,6 +12,11 @@ class Category extends Model
     use HasFactory,SoftDeletes;
     protected $guarded=[];
 
+    public function isParent()
+    {
+        return $this->belongsTo(Category::class,'parent_id','id');
+    }
+
     // public function setSlugAttribute($value)
     // {
     //     $this->attributes['title'] = $value;
