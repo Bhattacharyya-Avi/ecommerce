@@ -92,7 +92,8 @@ class CategoryController extends Controller
     public function edit($id)
     {
         $category = Category::find($id);
-        return view('backend.category.edit',compact('category'));
+        $parentCategories = Category::where('is_parent', '!=', 0)->get();
+        return view('backend.category.edit',compact('category','parentCategories'));
     }
 
     /**
@@ -104,16 +105,30 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // dd($request->all(),$id);
+        // finding categry info
         $category = Category::find($id);
+
         if ($category) {
-            $category->update([
-                'name'=>$request->name,
-                'details'=>$request->details,
-                'slug'=>Str::slug($request->name)
+            // data validation
+            $request->validate([
+                'name' => 'required',
+                'position' => 'required',
             ]);
-            session()->flash('success','category updated');
-            return redirect()->route('admin.categoris.index');
+            $data = [
+                'name'=>$request->name,
+                'slug'=>Str::slug($request->name),
+                'details'=>$request->details,
+                'position'=>$request->position,
+                'parent_id' => $request->parent_id
+            ];
+            try {
+                $category->update($data);
+                session()->flash('success','category updated');
+                return redirect()->route('categoris.index');
+            } catch (\Throwable $th) {
+                session()->flash('error',$th->getMessage(), $th->getLine());
+                return redirect()->back();
+            }
         }
     }
 
